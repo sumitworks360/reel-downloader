@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-&-4-v#78@1$7fkek=gwg7ayn!rl-*^xpko3u4py(j44p^*6mk5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["reel-downloader-3blh.onrender.com",
+    "localhost",
+    "127.0.0.1"]
 
 
 # Application definition
