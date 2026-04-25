@@ -68,11 +68,14 @@
                     throw new Error("Download failed");
                 }
 
-                const blob = await response.blob();
-                const downloadUrl = window.URL.createObjectURL(blob);
+                const data = await response.json();
+
+                if (!data.download_url) {
+                    throw new Error("No download link found");
+                }
 
                 const a = document.createElement('a');
-                a.href = downloadUrl;
+                a.href = data.download_url;
                 a.download = "reel.mp4";
                 document.body.appendChild(a);
                 a.click();
