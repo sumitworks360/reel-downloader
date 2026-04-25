@@ -39,7 +39,7 @@ def download_reel(request):
         print("API RESPONSE:", data)
 
         # 🔥 IMPORTANT: Extract correct video URL
-        video_url = data.get("data", {}).get("download_url")
+        video_url = data.get("data", {}).get("medias", [{}])[0].get("url")
 
         if not video_url:
             return Response({"error": "Failed to fetch video"}, status=400)
