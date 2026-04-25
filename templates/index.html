@@ -71,14 +71,34 @@
                 const data = await response.json();
 
                 if (!data.download_url) {
-                    throw new Error("No download link found");
+                throw new Error("No download link found");
                 }
 
-                window.open(data.download_url, '_blank');
+                // Clear previous content
+                status.innerHTML = "";
 
-                status.innerText = "Video opened. Tap and download from player ✅";
+                // 🎥 Create video preview
+                const video = document.createElement('video');
+                video.src = data.download_url;
+                video.controls = true;
+                video.style.width = "300px";
+                video.style.marginTop = "20px";
 
-                status.innerText = "Download complete ✅";
+                // ⬇️ Create download button
+                const downloadBtn = document.createElement('a');
+                downloadBtn.href = data.download_url;
+                downloadBtn.innerText = "Download Video";
+                downloadBtn.style.display = "block";
+                downloadBtn.style.marginTop = "10px";
+                downloadBtn.style.color = "#22c55e";
+
+                // Important for download
+                downloadBtn.setAttribute("download", "reel.mp4");
+
+                // Add to page
+                status.appendChild(video);
+                status.appendChild(downloadBtn);
+
 
             } catch (error) {
                 status.innerText = "Error downloading reel ❌";
