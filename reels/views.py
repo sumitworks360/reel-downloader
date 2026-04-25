@@ -36,6 +36,8 @@ def download_reel(request):
         response = requests.get(api_url, headers=headers, params=params)
         data = response.json()
 
+        print("API RESPONSE:", data)
+
         # 🔥 IMPORTANT: Extract correct video URL
         video_url = data.get("data", {}).get("download_url")
 
