@@ -74,12 +74,9 @@
                     throw new Error("No download link found");
                 }
 
-                const a = document.createElement('a');
-                a.href = data.download_url;
-                a.download = "reel.mp4";
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
+                window.open(data.download_url, '_blank');
+
+                status.innerText = "Video opened. Tap and download from player ✅";
 
                 status.innerText = "Download complete ✅";
 
